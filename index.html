@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Dos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <img src="./images/menu.png">
+        </div>
+        <h2>To_Do</h2>
+        
+    </header>
+    
+    <div class="content">
+        <div class="side-bar">
+            <div id="lists">
+                <li class="list active-list" id="home">Home</li>
+                <li class="list" id="today">Today</li>
+                <li class="list" id="week">Week</li>
+            </div>
+
+            <form action="" method="post" id="project-form">
+                <button type="submit" id="add-project-btn">+</button>
+                <input type="text" placeholder="add new project" id="project-input" maxlength="10">
+                
+            </form>
+
+            <div id="projects">
+                
+            </div>
+
+             
+        </div>
+        <main>
+            <!-- <button id="add-to-do">+</button> -->
+
+            <form action="" method="post" id="add-task-form" >
+                <button type="submit" class="btn" id="add-btn">+</button>
+                <input type="text" placeholder="Title" id="title" required maxlength="20">
+                <input type="date" id="date">
+                <div>
+                    <select name="priority" id="priority" required>
+                        <option value="low" id="low">low</option>
+                        <option value="medium" id="medium">medium</option>
+                        <option value="high" id="high">high</option>
+                    </select>
+                </div>
+                
+                
+                
+            </form>
+
+            <div id="tasks"></div>
+        </main>
+    </div>
+
+</body>
+</html>
