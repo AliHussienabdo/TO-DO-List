@@ -1,65 +1,6 @@
+import {task} from './task.js';
+import {List} from './list.js';
 import {format} from "date-fns"
-
-class task{
-    constructor(title,dueDate,priority){
-
-        this.title = title;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.done = false;
-    }
-
-    getTitle(){
-        return this.title;
-    }
-
-    getDate(){
-        return this.dueDate;
-    }
-
-    getPriority(){
-        return this.priority;
-    }
-
-    updateDone(){
-        this.done = (this.done)? false : true;
-    }
-
-    completed(){
-        return this.done;
-    }
-    
-}
-
-class List {
-    constructor(name){
-        this.name = name;
-        this.doList = [];
-    }
-    getName(){
-        return this.name;
-    }
-    getAllTasks(){
-        return this.doList;
-    }
-    addTask(newTask){
-        if(this.include(newTask.getTitle())) return false;
-        this.doList.push(newTask);
-        return true;
-    }
-    removeTask(title){ 
-        this.doList = this.doList.filter(cell => cell.getTitle() != title);
-        console.log()
-    }
-    updateTask(title){
-        const index = this.doList.findIndex(cell => cell.getTitle() == title);
-        this.doList[index].updateDone();
-    }
-    include(title){
-        return this.doList.some(cell => cell.getTitle() == title);
-    }
-}
-
 
 class AllTheLists {
     constructor(){
@@ -139,10 +80,9 @@ class AllTheLists {
 }
 
 
-let allTheLists = new AllTheLists();
+ let allTheLists = new AllTheLists();
 // the default working directory
 allTheLists.addList('Home');
 
-export  {task, allTheLists};
-
+export { allTheLists};
 

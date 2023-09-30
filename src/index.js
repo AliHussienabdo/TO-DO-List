@@ -1,4 +1,4 @@
-import {AddNewTask , AddNewProject, renderTasks, renderToday, renderWeek} from "./modules/DOMThings";
+import {AddNewTask , AddNewProject, renderTasks, renderToday, renderWeek} from "./modules/DOM_manipulation";
 
 const addTaskBtn = document.querySelector('#add-btn');
 const addProjectBtn = document.querySelector('#add-project-btn');
@@ -34,6 +34,5 @@ todayList.addEventListener('click', (e) => {
 });
 
 weekList.addEventListener('click', (e) => {
-    console.log('week listener works fine bro :)');
     renderWeek();
 });

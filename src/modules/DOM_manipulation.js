@@ -1,5 +1,5 @@
-
-import {task,allTheLists} from './to-doClass.js';
+import task from './task.js';
+import {allTheLists } from './projects.js';
 
 const formAddTask = document.querySelector('#add-task-form');
 
@@ -10,9 +10,6 @@ const priority = document.querySelector('#priority');
 
 const projectInput = document.querySelector('#project-input');
 const DomProjects = document.querySelector('#projects');
-const DomLists = document.querySelector('#lists');
-
-const HomeList = document.querySelector('#home');
 
 let CurrentListName = 'Home';
 
@@ -117,6 +114,7 @@ function addNewProjectToDom(added, projectName){
         project.addEventListener('click', (e) => {
             const projectName = project.firstElementChild.textContent;
             renderTasks(projectName);
+            // AddActiveList(project);
         })
     });
 }
