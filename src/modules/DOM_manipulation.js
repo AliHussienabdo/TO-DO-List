@@ -1,51 +1,48 @@
-import task from './task.js';
-import {allTheLists } from './projects.js';
+import {task} from './task.js';
+import {AllProjects } from './projects.js';
 
 const formAddTask = document.querySelector('#add-task-form');
+let TasksList = document.getElementById('tasks');
 
-const TasksList = document.getElementById('tasks');
 const title = document.querySelector('#title');
 const date = document.querySelector('#date');
 const priority = document.querySelector('#priority');
 
 const projectInput = document.querySelector('#project-input');
-const DomProjects = document.querySelector('#projects');
 
 let CurrentListName = 'Home';
 
 function AddNewTask() {
     if(title.value == '' || date.value == '' || priority.value == '') return;
-    // const DateValue = date.valueAsDate;
-    // console.log(date.value + ' ,' + DateValue );
-    const DATE = new Date(date.value);
-    console.log(DATE);
+
     const newTask = new task(title.value, date.value, priority.value);
-    const ADDED = allTheLists.addTaskToList(CurrentListName,newTask); // added == true if it's added , false otherwise
-    addNewTaskToDom(ADDED, newTask);
+    const NOTADDED = AllProjects.addTaskToList(CurrentListName,newTask); // added == true if it's added , false otherwise
+    addNewTaskToDom(NOTADDED, newTask);
+    // console.log(JSON.stringify(AllProjects));
 }
 
 
 function AddNewProject() {
     if(projectInput.value == '') return;
-    const ADDED = allTheLists.addList(projectInput.value);
-    addNewProjectToDom(ADDED, projectInput.value);
+    const NOTADDED = AllProjects.addList(projectInput.value);
+    addNewProjectToDom(NOTADDED, projectInput.value);
 }
 
-function addNewTaskToDom(added,newTask){
-    console.log(newTask.title + added);
-    if(!added) return;
+function addNewTaskToDom(notAdded,newTask){
+    if(!notAdded) return;
 
     let Checked = '';
     let notActive = '';
     let Activestrike = '';
 
-    if(newTask.completed()){
+    if(newTask.isCompleted()){
         Checked = "checked";
         notActive = 'non-active-task';
         Activestrike = 'active-strike';
     }
 
 
+    let TasksList = document.getElementById('tasks');
 
     TasksList.innerHTML += `<div class="task ${newTask.getPriority()} ${notActive}">
                                 <input type="checkbox" class="check-btn " ${Checked} >
@@ -63,7 +60,7 @@ function addNewTaskToDom(added,newTask){
         btn.addEventListener('click', (e) => {
             const taskTitle = btn.parentElement.previousElementSibling.previousElementSibling.textContent;
             btn.parentElement.parentElement.remove();
-            allTheLists.removeTask(CurrentListName, taskTitle);
+            AllProjects.removeTask(CurrentListName, taskTitle);
             CurrentListName = 'Home';
             // HomeList.click();
         })
@@ -75,7 +72,7 @@ function addNewTaskToDom(added,newTask){
     CheckBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const taskTitle = btn.nextElementSibling.textContent;
-            allTheLists.updateTask(CurrentListName, taskTitle);
+            AllProjects.updateTask(CurrentListName, taskTitle);
 
             const strike = btn.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
             strike.classList.toggle('active-strike');
@@ -87,8 +84,11 @@ function addNewTaskToDom(added,newTask){
     });
 }
 
-function addNewProjectToDom(added, projectName){
-    if(!added) return;
+function addNewProjectToDom(notAdded, projectName){
+    if(!notAdded) return;
+
+    const DomProjects = document.querySelector('#projects');
+
 
     DomProjects.innerHTML += `<li class="project" id="${projectName}">
                                 <div>${projectName}</div>
@@ -103,7 +103,7 @@ function addNewProjectToDom(added, projectName){
         icon.addEventListener('click', (e) => {
             const projName = icon.parentElement.previousElementSibling.textContent;
             icon.parentElement.parentElement.remove();
-            allTheLists.removeList(projName);
+            AllProjects.removeList(projName);
             
         })
     });
@@ -122,14 +122,14 @@ function addNewProjectToDom(added, projectName){
 function renderToday(){
     formAddTask.classList.add('hidden');
     clearTasksFromDom();
-    const todayTasks = allTheLists.TodayList();
+    const todayTasks = AllProjects.TodayList();
     todayTasks.forEach(task => addNewTaskToDom(true, task));
 }
 
 function renderWeek(){
     formAddTask.classList.add('hidden');
     clearTasksFromDom();
-    const UpCommingTasks = allTheLists.UpCommingTasks();
+    const UpCommingTasks = AllProjects.UpCommingTasks();
     UpCommingTasks.forEach(task => addNewTaskToDom(true, task));
 }
 
@@ -137,7 +137,7 @@ function renderTasks(ListName) {
     if(formAddTask.classList.contains('hidden')) formAddTask.classList.remove('hidden');
     
     clearTasksFromDom();
-    const TheList = allTheLists.ListOfTheTasks(ListName);
+    const TheList = AllProjects.ListOfTheTasks(ListName);
     TheList.forEach(task => addNewTaskToDom(true, task));
     CurrentListName = ListName;
 }
@@ -147,4 +147,4 @@ function clearTasksFromDom(){
 }
 
 
-export {AddNewTask, AddNewProject, renderTasks, renderToday, renderWeek};
+export {AddNewTask, AddNewProject, renderTasks, renderToday, renderWeek, addNewTaskToDom, addNewProjectToDom};

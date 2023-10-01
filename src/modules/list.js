@@ -3,29 +3,28 @@ import {task} from './task.js'
 export class List {
     constructor(name){
         this.name = name;
-        this.doList = [];
+        this.tasksList = [];
     }
     getName(){
         return this.name;
     }
     getAllTasks(){
-        return this.doList;
+        return this.tasksList;
     }
     addTask(newTask){
         if(this.include(newTask.getTitle())) return false;
-        this.doList.push(newTask);
+        this.tasksList.push(newTask);
         return true;
     }
     removeTask(title){ 
-        this.doList = this.doList.filter(cell => cell.getTitle() != title);
-        console.log()
+        this.tasksList = this.tasksList.filter(cell => cell.getTitle() != title);
     }
     updateTask(title){
-        const index = this.doList.findIndex(cell => cell.getTitle() == title);
-        this.doList[index].updateDone();
+        const index = this.tasksList.findIndex(cell => cell.getTitle() == title);
+        this.tasksList[index].updateCompleted();
     }
     include(title){
-        return this.doList.some(cell => cell.getTitle() == title);
+        return this.tasksList.some(cell => cell.getTitle() == title);
     }
 }
 

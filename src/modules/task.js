@@ -1,12 +1,12 @@
 
 
-export default class task{
-    constructor(title,dueDate,priority){
+export class task{
+    constructor(title,dueDate,priority, completed = false) {
 
         this.title = title;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.done = false;
+        this.completed = completed;
     }
 
     getTitle(){
@@ -21,12 +21,12 @@ export default class task{
         return this.priority;
     }
 
-    updateDone(){
-        this.done = (this.done)? false : true;
+    updateCompleted(){
+        this.completed = (this.completed)? false : true;
     }
 
-    completed(){
-        return this.done;
+    isCompleted(){
+        return this.completed;
     }
     
 }
