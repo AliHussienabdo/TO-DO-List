@@ -1,5 +1,5 @@
 # ToDo-List-App
-- This is a Basic Todo-List
+- This is a Todo-List app
 - using date-fns package
 - live preview here: https://alihussienabdo.github.io/TO-DO-List/
 
