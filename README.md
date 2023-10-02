@@ -1,7 +1,7 @@
 # ToDo-List-App
 - This is a Todo-List app
 - using date-fns package
-- live preview here: https://alihussienabdo.github.io/TO-DO-List/
+- live preview here: [demo](https://alihussienabdo.github.io/ToDo-List-App/)
 
 # Functionality
 - add projects
