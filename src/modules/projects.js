@@ -21,7 +21,6 @@ class Projects {
     const index = this.findIndex(ListName);
     // return true if added otherwise false
     const addedBefore = this.projects[index].addTask(newTask);
-    console.log(JSON.stringify(this.projects));
     updateLocalStorage(this.projects);
     return addedBefore;
   }
