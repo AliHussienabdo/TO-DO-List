@@ -1,9 +1,11 @@
 # ToDo-List
+
 - This is a Basic Todo-List
 - using date-fns package
 - live preview here: https://alihussienabdo.github.io/TO-DO-List/
 
 # Functionality
+
 - add projects
 - temporarily hide side panel
 - Responsive for mobile

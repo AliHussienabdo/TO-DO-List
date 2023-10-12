@@ -1,4 +1,10 @@
-import {AddNewTask , AddNewProject, renderTasks, renderToday, renderWeek} from "./modules/DOM_manipulation";
+import {
+  AddNewTask,
+  AddNewProject,
+  renderTasks,
+  renderToday,
+  renderWeek,
+} from './modules/DOM_manipulation';
 
 const addTaskBtn = document.querySelector('#add-btn');
 const addProjectBtn = document.querySelector('#add-project-btn');
@@ -10,29 +16,29 @@ const weekList = document.querySelector('#week');
 const menuIcon = document.querySelector('#menu');
 const sideBar = document.querySelector('.side-bar');
 
-menuIcon.addEventListener('click', () =>{
-    sideBar.classList.toggle('hidden');
-    document.querySelector('main').classList.toggle('full-screen');
-})
+menuIcon.addEventListener('click', () => {
+  sideBar.classList.toggle('hidden');
+  document.querySelector('main').classList.toggle('full-screen');
+});
 
 addTaskBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    AddNewTask();
+  e.preventDefault();
+  AddNewTask();
 });
 
 addProjectBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    AddNewProject();
+  e.preventDefault();
+  AddNewProject();
 });
 
-HomeList.addEventListener('click', (e) => {
-    renderTasks('Home');
+HomeList.addEventListener('click', () => {
+  renderTasks('Home');
 });
 
-todayList.addEventListener('click', (e) => {
-    renderToday();
+todayList.addEventListener('click', () => {
+  renderToday();
 });
 
-weekList.addEventListener('click', (e) => {
-    renderWeek();
+weekList.addEventListener('click', () => {
+  renderWeek();
 });

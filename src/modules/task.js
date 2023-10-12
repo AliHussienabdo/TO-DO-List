@@ -1,32 +1,28 @@
+export default class task {
+  constructor(title, dueDate, priority, completed = false) {
+    this.title = title;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.completed = completed;
+  }
 
+  getTitle() {
+    return this.title;
+  }
 
-export class task{
-    constructor(title,dueDate,priority, completed = false) {
+  getDate() {
+    return this.dueDate;
+  }
 
-        this.title = title;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.completed = completed;
-    }
+  getPriority() {
+    return this.priority;
+  }
 
-    getTitle(){
-        return this.title;
-    }
+  updateCompleted() {
+    this.completed = !this.completed;
+  }
 
-    getDate(){
-        return this.dueDate;
-    }
-
-    getPriority(){
-        return this.priority;
-    }
-
-    updateCompleted(){
-        this.completed = (this.completed)? false : true;
-    }
-
-    isCompleted(){
-        return this.completed;
-    }
-    
+  isCompleted() {
+    return this.completed;
+  }
 }
