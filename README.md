@@ -8,7 +8,7 @@
 - add projects
 - temporarily hide side panel
 - Responsive for mobile
-- add tasks into your projects (title, due-datem, priority)
+- add tasks into your projects (title, due-date, priority)
 - mark or unmark your tasks as completed
 - display all tasks
 - display all tasks that is dued today
