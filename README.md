@@ -1,7 +1,7 @@
 # ToDo-List-App
 - This is a Basic Todo-List
 - using date-fns package
-- live preview here: [demo](https://alihussienabdo.github.io/ToDo-List-App/)
+- live preview here: [demo](alyhusseinn.github.io/ToDo-List-App/)
 
 # Functionality
 
